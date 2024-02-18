@@ -46,7 +46,7 @@ public class LearningPortalController {
 		return new ResponseEntity<>(courses, HttpStatus.OK);
 	}
 
-	@GetMapping("/Courses/{name}")
+	@GetMapping("/courses/{name}")
 	public List<Course> getAllJavaCourses(@PathVariable String name) {
 		return courseService.GetAllJavaCourses(name);
 	}
