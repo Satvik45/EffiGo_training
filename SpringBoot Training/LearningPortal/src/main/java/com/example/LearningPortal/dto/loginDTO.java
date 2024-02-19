@@ -1,18 +1,24 @@
 package com.example.LearningPortal.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+public class loginDTO {
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserDTO {
-
-	private Long userID;
 	private String username;
 	private String password;
-	private String role;
+
+	// Default constructor
+	public loginDTO() {
+	}
+
+	// Parameterized constructor
+	public loginDTO(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	// Getters and setters
+	public String getUsername() {
+		return username;
+	}
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -25,4 +31,5 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 }

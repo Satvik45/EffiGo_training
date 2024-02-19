@@ -3,6 +3,9 @@ package com.example.LearningPortal.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,10 +42,16 @@ public class User {
 	@OneToMany(mappedBy = "learner")
 	private List<Enrollment> enrollments;
 
-	@Column(name = "created_on")
+	@Column(name = "created_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@CreatedDate
 	private LocalDateTime createdOn;
 
-	@Column(name = "updated_on")
+	@Column(name = "updated_on", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@LastModifiedDate
 	private LocalDateTime updatedOn;
+
+	public String getPasswordHash() {
+		return password;
+	}
 
 }

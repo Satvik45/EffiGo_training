@@ -11,17 +11,18 @@ import org.springframework.stereotype.Service;
 import com.example.LearningPortal.entity.Course;
 import com.example.LearningPortal.repo.CourseRepository;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Service
 public class CourseService {
 
-	private CourseRepository courseRepository;
+	public CourseService(CourseRepository courseRepository) {
+		super();
+		this.courseRepository = courseRepository;
+	}
+
+	private final CourseRepository courseRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(CourseService.class);
 

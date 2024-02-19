@@ -1,11 +1,14 @@
 package com.example.LearningPortal.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.LearningPortal.entity.User;
 import com.example.LearningPortal.repo.UserRepository;
+import com.example.LearningPortal.security.SecurityConfig;
 
 @Service
 public class UserService {
@@ -16,14 +19,42 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
+	public List<User> findAllUsers() {
+		return userRepository.findAll();
+	}
+
+	public Optional<User> findById(Long id) {
+		return userRepository.findById(id);
+	}
+
 	public User saveUser(User user) {
 		user.setCreatedOn(LocalDateTime.now());
+		user.setUpdatedOn(LocalDateTime.now());
+
+		String plainPassword = user.getPassword();
+		String hashedPassword = SecurityConfig.hashPassword(plainPassword);
+		user.setPassword(hashedPassword);
+
+		return userRepository.save(user);
+
+	}
+
+	public User updateUser(Long id, User user) {
+		String plainPassword = user.getPassword();
+		if (plainPassword != null) {
+			String hashedPassword = SecurityConfig.hashPassword(plainPassword);
+			user.setPassword(hashedPassword);
+		}
 		user.setUpdatedOn(LocalDateTime.now());
 		return userRepository.save(user);
 	}
 
 	public User getUserById(long userId) {
 		return userRepository.findById(userId).orElse(null);
+	}
+
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 }
