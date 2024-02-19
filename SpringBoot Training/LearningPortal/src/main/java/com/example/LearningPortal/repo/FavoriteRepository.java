@@ -8,9 +8,4 @@ import com.example.LearningPortal.entity.Favorite;
 @Repository
 public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
 
-	//	public Favourite save(Favourite favourite) {
-	//		// TODO Auto-generated method stub
-	//		return null;
-	//	}
-
 }

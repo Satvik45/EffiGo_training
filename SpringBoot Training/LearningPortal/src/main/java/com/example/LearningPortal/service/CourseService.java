@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.LearningPortal.entity.Course;
@@ -22,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Service
 public class CourseService {
 
-	@Autowired
 	private CourseRepository courseRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(CourseService.class);
@@ -43,7 +41,6 @@ public class CourseService {
 	}
 
 	public List<Course> getAllCourses() {
-		// TODO Auto-generated method stub
 		return courseRepository.findAll();
 	}
 
@@ -70,7 +67,7 @@ public class CourseService {
 	}
 
 	public List<Course> GetAllJavaCourses(String name) {
-		System.out.println(name);
+
 		logger.info(" Fetched ");
 		return courseRepository.findAllJavaCourses(name);
 	}

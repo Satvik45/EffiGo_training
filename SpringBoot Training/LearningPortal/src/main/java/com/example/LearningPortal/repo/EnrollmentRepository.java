@@ -6,9 +6,4 @@ import com.example.LearningPortal.entity.Enrollment;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
-	//	public Enrollment save(Enrollment enrollment) {
-	//		// TODO Auto-generated method stub
-	//		return null;
-	//	}
-
 }

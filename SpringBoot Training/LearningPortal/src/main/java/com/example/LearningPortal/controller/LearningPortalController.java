@@ -3,7 +3,6 @@ package com.example.LearningPortal.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,19 +24,24 @@ import com.example.LearningPortal.service.UserService;
 @RequestMapping("/api")
 public class LearningPortalController {
 
-	@Autowired
 	private UserService userService;
 
-	@Autowired
 	private CourseService courseService;
 
-	@Autowired
 	private CategoryService categoryService;
 
-	@Autowired
 	private EnrollmentService enrollmentService;
 
-	@Autowired
+	public LearningPortalController(UserService userService, CourseService courseService,
+			CategoryService categoryService, EnrollmentService enrollmentService, FavoriteService favoriteService) {
+		super();
+		this.userService = userService;
+		this.courseService = courseService;
+		this.categoryService = categoryService;
+		this.enrollmentService = enrollmentService;
+		this.favoriteService = favoriteService;
+	}
+
 	private FavoriteService favoriteService;
 
 	@GetMapping("/courses")
