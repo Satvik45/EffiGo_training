@@ -39,7 +39,7 @@ public class UserService {
 
 	}
 
-	public User updateUser(Long id, User user) {
+	public User updateUser(long id, User user) {
 		String plainPassword = user.getPassword();
 		if (plainPassword != null) {
 			String hashedPassword = SecurityConfig.hashPassword(plainPassword);
