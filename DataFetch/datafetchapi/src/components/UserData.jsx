@@ -6,7 +6,7 @@ const UserData = ({ users }) => {
         const { street, city, zipcode } = curUser.address;
 
         return (
-          <tr key={id}>
+          <tr className="data-row" key={id}>
             <td>{id}</td>
             <td>{name}</td>
             <td>{email}</td>
