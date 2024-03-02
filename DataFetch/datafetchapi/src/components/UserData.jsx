@@ -3,7 +3,7 @@ const UserData = ({ users }) => {
     <>
       {users.map((curUser) => {
         const { id, name, email, address } = curUser;
-        const { street, city, zipcode } = curUser.address;
+        const { street, city, zipcode } = address;
 
         return (
           <tr className="data-row" key={id}>
